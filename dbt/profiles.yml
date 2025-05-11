@@ -1,0 +1,12 @@
+my_dbt:
+  target: dev
+  outputs:
+    dev:
+      type: bigquery
+      method: service-account
+      project: llms-395417  # GCP project ID
+      dataset: spacex_dataset  # BigQuery dataset name
+      threads: 4
+      timeout_seconds: 300
+      location: us-east1
+      keyfile: /opt/airflow/secrets/llms-395417-c18ea70a3f54.json

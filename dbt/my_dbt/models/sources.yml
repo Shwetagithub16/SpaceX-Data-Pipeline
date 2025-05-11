@@ -1,0 +1,8 @@
+version: 2
+
+sources:
+  - name: spacex_dataset
+    database: llms-395417
+    schema: spacex_dataset
+    tables:
+      - name: spacex_table

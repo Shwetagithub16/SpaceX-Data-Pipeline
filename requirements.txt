@@ -1,0 +1,5 @@
+requests
+google.cloud
+dbt-bigquery==1.7.6
+apache-airflow==2.8.1
+dbt-bigquery
