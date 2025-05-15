@@ -1,10 +1,13 @@
 from airflow import DAG
-from airflow.operators.python import PythonOperator
+from airflow.operators.python import PythonOperator, BranchPythonOperator
 from airflow.operators.bash import BashOperator
+from airflow.operators.empty import EmptyOperator
 from datetime import datetime
 import warnings
 import os
 import sys
+
+from tornado.process import task_id
 
 warnings.filterwarnings("ignore", category=DeprecationWarning)
 
@@ -21,13 +24,24 @@ default_args = {
     'retries': 0
 }
 
+def check_new_partition():
+    from scripts.extract_and_gcpload import is_new_partition_available
+    return "extract_and_upload_to_gcs" if is_new_partition_available() else "no_new_partition"
+
 with DAG(
     'spacex_etl_dag',
     default_args=default_args,
-    schedule_interval=None,
+    schedule_interval="daily",
     schedule=None,
     catchup=False              #prevents Airflow from running missed periods
 ) as dag:
+
+    check_partition = BranchPythonOperator(
+        task_id = 'check_for_new_partition',
+        python_callable=check_new_partition
+    )
+
+    no_new_partition =EmptyOperator(task_id='no_new_partition')
 
     extract_and_upload = PythonOperator(
         task_id="extract_and_upload_to_gcs",
@@ -44,4 +58,5 @@ with DAG(
         bash_command='dbt run --project-dir /opt/airflow/dbt/my_dbt --profiles-dir /opt/airflow/dbt'
     )
 
+    check_partition >> [extract_and_upload, no_new_partition]
     extract_and_upload >> load_to_bq >> run_dbt
