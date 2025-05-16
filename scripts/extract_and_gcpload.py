@@ -1,6 +1,6 @@
 import requests
-from datetime import datetime
 from google.cloud import bigquery
+from google.api_core.exceptions import NotFound
 import logging
 import pandas as pd
 from dateutil import parser
@@ -99,10 +99,14 @@ def is_new_partition_available():
         FROM `llms-395417.spacex_dataset.spacex_table`
         WHERE date_utc IS NOT NULL
     """
+    try:
+        result = client.query(query).result()
+        row = next(result)
+        bq_latest_date = row.latest_date
+    except NotFound:
+        print("Table not present in BigQuery")
+        return True
 
-    result = client.query(query).result()
-    row = next(result)
-    bq_latest_date = row.latest_date
 
     if bq_latest_date is None:
         return True
