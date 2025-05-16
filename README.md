@@ -1,16 +1,16 @@
-This repository contains an end-to-end data pipeline project built to extract, transform, and load (ETL) SpaceX launch data using modern data engineering tools and best practices.
-The pipeline is designed to be production-ready, containerized, and cloud-deployable. It orchestrates the flow of raw data ingestion, transformation, validation, and final loading into a data warehouse.
+# 🚀 SpaceX Data Pipeline
 
-The pipeline automates the following steps:
+This repository contains an **end-to-end data pipeline** built to extract, transform, and load (ETL) SpaceX launch data using modern data engineering tools and best practices. The pipeline is designed to be **production-ready**, **containerized**, and **cloud-deployable** using Google Cloud Platform (GCP).
 
-- Data Ingestion: Pulls raw SpaceX launch data from a public API.
+---
 
-- Data Processing & Cleansing: Transforms and validates the data using Python.
+## 📌 Project Overview
 
-- Data Loading: Stores cleaned data in Google Cloud Storage and loads it into BigQuery.
+This project automates the following ETL workflow:
 
-- Data Transformation: Uses dbt to create semantic models and transformations within BigQuery.
-
-- Orchestration: Apache Airflow orchestrates the entire workflow with a DAG scheduled to run daily.
-
-- Deployment: Entire pipeline is containerized using Docker and deployed to Google Cloud Run, triggered by Cloud Scheduler.
+1. **🔄 Data Ingestion**: Fetches raw SpaceX launch data from the [SpaceX public API](https://api.spacexdata.com/v4/launches).
+2. **🧹 Data Cleansing & Validation**: Uses Python to process and validate the raw data.
+3. **📦 Data Loading**: Uploads the clean data to **Google Cloud Storage (GCS)** and loads it into **BigQuery**.
+4. **🔁 Data Transformation**: Applies further modeling and transformations with **dbt** (Data Build Tool).
+5. **🕹️ Orchestration**: Uses **Apache Airflow** to schedule and manage the entire pipeline through DAGs.
+6. **☁️ Cloud Deployment**: Entire pipeline is **containerized with Docker**, deployed on **Cloud Run**, and triggered daily via **Cloud Scheduler**.
