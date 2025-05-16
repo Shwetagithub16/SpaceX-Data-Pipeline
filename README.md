@@ -31,26 +31,3 @@ This project automates the following ETL workflow:
 
 ---
 
-## 📁 Project Structure
-
-SpaceX-Data-Pipeline/
-│
-├── dags/ # Airflow DAGs
-│ └── spacex_etl_dag.py
-│
-├── scripts/ # Python scripts for ingestion & processing
-│ ├── fetch_spacex_data.py
-│ ├── clean_spacex_data.py
-│ └── upload_to_gcs.py
-│
-├── dbt/ # dbt project folder
-│ ├── models/
-│ ├── dbt_project.yml
-│ └── profiles.yml
-│
-├── Dockerfile # Container for the entire ETL pipeline
-├── requirements.txt # Python dependencies
-├── .dockerignore
-├── .gitignore
-├── README.md
-└── ...
