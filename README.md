@@ -14,3 +14,19 @@ This project automates the following ETL workflow:
 4. **🔁 Data Transformation**: Applies further modeling and transformations with **dbt** (Data Build Tool).
 5. **🕹️ Orchestration**: Uses **Apache Airflow** to schedule and manage the entire pipeline through DAGs.
 6. **☁️ Cloud Deployment**: Entire pipeline is **containerized with Docker**, deployed on **Cloud Run**, and triggered daily via **Cloud Scheduler**.
+
+
+## 🛠️ Tech Stack
+
+| Layer                | Tools/Tech                            |
+|---------------------|----------------------------------------|
+| Orchestration       | Apache Airflow                         |
+| Data Processing     | Python (Pandas, Requests, etc.)        |
+| Data Warehouse      | Google BigQuery                        |
+| Data Storage        | Google Cloud Storage                   |
+| Transformation      | dbt (BigQuery adapter)                 |
+| Containerization    | Docker                                 |
+| Deployment          | Cloud Run + Cloud Scheduler            |
+| Infrastructure      | Google Cloud Platform (GCP)            |
+
+---
