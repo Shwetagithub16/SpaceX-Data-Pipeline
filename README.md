@@ -97,3 +97,6 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
 3. **Run container:**
    ```bash
    docker run -e GOOGLE_APPLICATION_CREDENTIALS="/app/secrets/your-key.json" spacex-etl
+
+Make sure your service_account_key.json is mounted inside the container for GCP access.
+
