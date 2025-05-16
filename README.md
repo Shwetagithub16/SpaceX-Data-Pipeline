@@ -90,10 +90,3 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
    git clone https://github.com/yourusername/SpaceX-Data-Pipeline.git
    cd SpaceX-Data-Pipeline
 
-2. Build Docker image:
-
-bash
-Copy
-Edit
-docker build -t spacex-etl .
-
