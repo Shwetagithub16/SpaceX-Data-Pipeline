@@ -94,5 +94,6 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
    ```bash
    docker build -t spacex-etl .
 
-   
-
+3. **Run container:**
+   ```bash
+   docker run -e GOOGLE_APPLICATION_CREDENTIALS="/app/secrets/your-key.json" spacex-etl
