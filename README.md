@@ -57,9 +57,3 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
 
 ---
 
-## 🐳 Running Locally with Docker
-
-1. **Clone the repository:**
-   ```bash
-   git clone https://github.com/yourusername/SpaceX-Data-Pipeline.git
-   cd SpaceX-Data-Pipeline
