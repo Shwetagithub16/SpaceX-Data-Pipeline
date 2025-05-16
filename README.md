@@ -5,7 +5,7 @@ The pipeline automates the following steps:
 
 - Data Ingestion: Pulls raw SpaceX launch data from a public API.
 
-- Data Processing & Cleansing: Transforms and validates the data using Python and great_expectations.
+- Data Processing & Cleansing: Transforms and validates the data using Python.
 
 - Data Loading: Stores cleaned data in Google Cloud Storage and loads it into BigQuery.
 
