@@ -4,7 +4,9 @@ import os
 
 # Set your service account key
 os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = "/opt/airflow/secrets/llms-395417-c18ea70a3f54.json"
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s", handlers=[
+        logging.FileHandler("logs/spacex_pipeline.log"),
+        logging.StreamHandler()])
 
 # -------------------- STEP 1: Load CSV to BigQuery --------------------
 def load_csv_to_bigquery():

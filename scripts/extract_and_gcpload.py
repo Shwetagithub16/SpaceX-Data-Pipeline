@@ -13,7 +13,9 @@ credentials_path = "/opt/airflow/secrets/llms-395417-c18ea70a3f54.json"
 credentials = service_account.Credentials.from_service_account_file(credentials_path)
 client = storage.Client(credentials=credentials)
 
-logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s")
+logging.basicConfig(level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s", handlers=[
+        logging.FileHandler("logs/spacex_pipeline.log"),
+        logging.StreamHandler()])
 
 bucket_name = "shwetabucket"
 client = storage.Client()
