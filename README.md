@@ -57,3 +57,43 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
 
 ---
 
+## 🚀 How It Works
+
+### 1. Ingestion
+Fetch launch data from the SpaceX API and save it locally or directly upload to GCS.
+
+### 2. Processing
+Clean and validate the JSON data. Drop irrelevant fields, fix missing or incorrect values, and prepare it for loading.
+
+### 3. Loading
+- Upload raw and clean datasets to GCS.
+- Load the clean dataset from GCS into a BigQuery table (`spacex.launch_data`).
+
+### 4. dbt Transformations
+Run dbt models to create curated tables and views, including dimension and fact tables for analytics.
+
+### 5. Orchestration with Airflow
+Airflow DAG is responsible for:
+- Triggering ingestion scripts
+- Running dbt transformations
+- Managing dependencies and retries
+
+### 6. Cloud Deployment
+The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Scheduler.
+
+---
+
+## 🐳 Running Locally with Docker
+
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/yourusername/SpaceX-Data-Pipeline.git
+   cd SpaceX-Data-Pipeline
+
+2. Build Docker image:
+
+bash
+Copy
+Edit
+docker build -t spacex-etl .
+
