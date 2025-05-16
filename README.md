@@ -91,7 +91,8 @@ The Dockerized pipeline is deployed on Cloud Run and invoked daily via Cloud Sch
    cd SpaceX-Data-Pipeline
 
 2. **Build Docker image:**
-   '''docker build -t spacex-etl .
+   '''bash
+   docker build -t spacex-etl .
 
    
 
